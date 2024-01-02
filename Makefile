@@ -29,3 +29,5 @@ $(BINDIR):
 clean:
 	rm -rf $(BUILDDIR) $(BINDIR)
 
+run: all
+	./$(BINDIR)/$(TARGET)
