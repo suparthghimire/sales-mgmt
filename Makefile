@@ -41,7 +41,7 @@ data/products.csv:
 create_files: data/customers.csv data/invoices.csv data/products.csv
 
 clean:
-	rm -rf $(BUILDDIR) $(BINDIR)
+	rm -rf $(BUILDDIR) $(BINDIR) data
 
 
 

@@ -4,6 +4,6 @@
 int main()
 {
     system("clear");
-    int choice = Menu::StartMenu();
+    Menu::StartMenu();
     return 0;
 }
