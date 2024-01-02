@@ -26,8 +26,32 @@ $(BUILDDIR):
 $(BINDIR):
 	mkdir -p $(BINDIR)
 
-clean:
-	rm -rf $(BUILDDIR) $(BINDIR)
+data/customers.csv:
+	mkdir -p data
+	echo "This is customers.csv" > data/customers.csv
 
-run: all
+data/invoices.csv:
+	mkdir -p data
+	echo "This is invoices.csv" > data/invoices.csv
+
+data/products.csv:
+	mkdir -p data
+	echo "This is products.csv" > data/products.csv
+
+create_files: data/customers.csv data/invoices.csv data/products.csv
+
+clean:
+	rm -rf $(BUILDDIR) $(BINDIR) data
+
+
+
+run: ./$(BINDIR)/$(TARGET) 
+
+
+compile: all create_files 
+	echo "Compiled"
+
+# with using run command, only using make
+compile-run: all create_files
 	./$(BINDIR)/$(TARGET)
+
