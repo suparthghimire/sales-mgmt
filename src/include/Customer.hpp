@@ -14,5 +14,5 @@ public:
     // Constructor to initialize a Customer with a given name.
     Customer(std::string name);
 
-    void save();
+    void to_csv();
 };

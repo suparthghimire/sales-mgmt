@@ -11,13 +11,10 @@ Customer::Customer(std::string name)
     this->name = name;
 }
 
-void Customer::save()
+void Customer::to_csv()
 {
 
-    std::string fileName = std::to_string(this->id) + "-" + this->name;
-    std::string fileParent = "customers";
-    std::string path = fileParent + "/" + fileName + ".txt";
-    std::string data = std::to_string(this->id) + "\n" + this->name;
-
-    FileHandler::writeFile(path, data);
+    std::string fileName = "customers";
+    std::string data = std::to_string(this->id) + "," + this->name;
+    FileHandler::writeFile(fileName, data);
 }

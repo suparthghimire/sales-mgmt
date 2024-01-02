@@ -5,10 +5,10 @@ std::string DATA_DIR = "./data/";
 
 bool FileHandler::writeFile(std::string &filename, std::string &data)
 {
-    std::string fullPath = DATA_DIR + filename;
+    std::string fullPath = DATA_DIR + filename + ".csv";
 
     // Open the file for writing
-    std::ofstream outputFile(fullPath);
+    std::ofstream outputFile(fullPath, std::ios::app);
 
     std::cout << fullPath << std::endl;
 
@@ -20,7 +20,7 @@ bool FileHandler::writeFile(std::string &filename, std::string &data)
     }
 
     // Write the data to the file
-    outputFile << data;
+    outputFile << data << "\n";
 
     // Close the file
     outputFile.close();

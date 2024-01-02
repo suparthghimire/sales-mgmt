@@ -126,8 +126,8 @@ int Menu::CustomerMenu()
 
             // create customer
             Customer customer(name);
-            // save to file
-            customer.save();
+            // to_csv to file
+            customer.to_csv();
 
             Menu::PressKeyToContinue();
             break;
