@@ -13,6 +13,9 @@ void Menu::PressKeyToContinue(std::string message = "Press any key to go back")
 int Menu::DisplayMenu(std::string menu_items[], int menu_items_length)
 {
 
+    std::cout << "===================================" << std::endl;
+    std::cout << "        Sales Management System    " << std::endl;
+    std::cout << "===================================" << std::endl;
     for (int i = 0; i < menu_items_length; i++)
     {
         std::cout << menu_items[i] << std::endl;
@@ -28,15 +31,17 @@ int Menu::DisplayMenu(std::string menu_items[], int menu_items_length)
 
 int Menu::StartMenu()
 {
+
     std::string menu_items[4] = {
-        "1. Manage invoices",
-        "2. Manage Customers",
-        "3. Handle Products",
+        "1. Invoice Management",
+        "2. Customer Management",
+        "3. Product Management",
         "4. Quit"};
 
     while (true)
     {
         system("clear");
+
         int choice = DisplayMenu(menu_items, 4);
 
         switch (choice)
@@ -135,8 +140,6 @@ int Menu::CustomerMenu()
             break;
         }
     }
-
-    // Add implementation for handling the choice in the CustomerMenu
 }
 
 int Menu::ProductMenu()
