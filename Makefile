@@ -2,7 +2,7 @@ CXX := g++  # Change this to your C++ compiler
 SRCDIR := src
 BUILDDIR := build
 BINDIR := bin
-TARGET := YourExecutableName
+TARGET := SalesMgmt
 
 SRCS := $(wildcard $(SRCDIR)/*.cpp)
 OBJS := $(patsubst $(SRCDIR)/%.cpp,$(BUILDDIR)/%.o,$(SRCS))
@@ -41,17 +41,17 @@ data/products.csv:
 create_files: data/customers.csv data/invoices.csv data/products.csv
 
 clean:
-	rm -rf $(BUILDDIR) $(BINDIR) data
+	rm -rf $(BUILDDIR) $(BINDIR)
 
 
 
 run: ./$(BINDIR)/$(TARGET) 
 
 
-compile: all create_files 
+compile: clean all create_files 
 	echo "Compiled"
 
 # with using run command, only using make
-compile-run: all create_files
+compile-run: clean all create_files
 	./$(BINDIR)/$(TARGET)
 
