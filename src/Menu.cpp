@@ -2,11 +2,10 @@
 #include <iostream>
 #include <time.h>
 
-void Menu::PressKeyToContinue()
+void Menu::PressKeyToContinue(std::string message = "Press any key to go back")
 {
+    std::cout << message;
     std::cin.ignore();
-    std::string input;
-    std::cout << "Press any key to go back";
     std::cin.get();
 }
 
