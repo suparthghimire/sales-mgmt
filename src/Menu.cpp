@@ -1,4 +1,5 @@
 #include "include/Menu.hpp"
+#include "include/Customer.hpp"
 #include <iostream>
 #include <time.h>
 
@@ -107,16 +108,26 @@ int Menu::CustomerMenu()
 
     while (true)
     {
+        system("clear");
         int choice = DisplayMenu(menu_items, 2);
         switch (choice)
         {
         case 1:
+        {
             std::cout << "Create Customer" << std::endl;
+            std::cout << "Enter name: ";
+            std::string name;
+            std::cin >> name;
+
+            // create customer
+            Customer customer(name);
+            // save to file
+            customer.save();
+
             Menu::PressKeyToContinue();
             break;
+        }
         case 2:
-            std::cout << "Going back";
-            Menu::PressKeyToContinue();
             return 0;
         default:
             std::cout << "Invalid choice" << std::endl;

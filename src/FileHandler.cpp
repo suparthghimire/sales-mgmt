@@ -1,9 +1,16 @@
 #include "include/FileHandler.hpp"
+#include <string>
+
+std::string DATA_DIR = "./data/";
 
 bool FileHandler::writeFile(std::string &filename, std::string &data)
 {
+    std::string fullPath = DATA_DIR + filename;
+
     // Open the file for writing
-    std::ofstream outputFile(filename);
+    std::ofstream outputFile(fullPath);
+
+    std::cout << fullPath << std::endl;
 
     // Check if the file is opened successfully
     if (!outputFile.is_open())
@@ -17,13 +24,15 @@ bool FileHandler::writeFile(std::string &filename, std::string &data)
 
     // Close the file
     outputFile.close();
+
     return true;
 }
 
 bool FileHandler::readFromFile(const std::string &filename, std::string &content)
 {
+    std::string full_path = DATA_DIR + filename;
     // Open the file for reading
-    std::ifstream inputFile(filename);
+    std::ifstream inputFile(full_path);
 
     // Check if the file is opened successfully
     if (!inputFile.is_open())
