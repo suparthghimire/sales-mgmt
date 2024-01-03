@@ -36,7 +36,13 @@ data:
 create_files: data
 
 clean:
+#Windows
+ifeq ($(OS),Windows_NT)
+	deltree /S /Q $(BUILDDIR) $(BINDIR)	
+# UNIX
+else
 	rm -rf $(BUILDDIR) $(BINDIR)
+endif
 
 
 
