@@ -11,9 +11,9 @@
 
 T_ProductMap ProductMap::products;
 
-void ProductMap::addProductToMap(std::pair<int, int> key, std::unique_ptr<Product> value)
+void ProductMap::addProductToMap(int id, std::unique_ptr<Product> value)
 {
-    products.emplace(std::make_pair(key, std::move(value)));
+    products.emplace(std::make_pair(id, std::move(value)));
 }
 
 T_ProductMap ProductMap::getProducts()
@@ -21,18 +21,25 @@ T_ProductMap ProductMap::getProducts()
     return std::move(products);
 }
 
-std::unique_ptr<Product> ProductMap::getSingleProduct(std::pair<int, int> key)
+std::unique_ptr<Product> &ProductMap::getSingleProduct(int id)
 {
-    std::unique_ptr<Product> product = std::move(products[key]);
-    return product;
+
+    auto iterator = products.find(id);
+    if (iterator == products.end())
+    {
+        static std::unique_ptr<Product> nullProduct; // Return a static null object
+        return nullProduct;
+    }
+    return iterator->second;
 }
 
 void ProductMap::load()
 {
     // variable that will have list of all products
-    std::string content;
-    std::cout << content << std::endl;
 
+    std::string content;
+    FileHandler::readFromFile("products", content);
+    std::cout << "Content: " << content << std::endl;
     /**
      * For each line
      * 1. split the line by comma
@@ -83,7 +90,7 @@ void ProductMap::load()
             break;
         }
 
-        ProductMap::addProductToMap(std::make_pair(id, type), std::move(product));
+        ProductMap::addProductToMap(id, std::move(product));
     }
 }
 

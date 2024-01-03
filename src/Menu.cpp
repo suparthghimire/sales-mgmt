@@ -64,46 +64,6 @@ int Menu::StartMenu()
     }
 }
 
-int Menu::InvoiceMenu()
-{
-    std::string menu_items[4] = {
-        "1. Create Invoice",
-        "2. Add product to invoice",
-        "3. Calculate invoice total",
-        "4. Back"};
-
-    while (true)
-    {
-        system("clear");
-        int choice = DisplayMenu(menu_items, 4);
-
-        switch (choice)
-        {
-        case 1:
-            std::cout << "Create Invoice" << std::endl;
-            // get input
-            Menu::PressKeyToContinue();
-            break;
-        case 2:
-            std::cout << "Add product to invoice" << std::endl;
-            Menu::PressKeyToContinue();
-            break;
-        case 3:
-            std::cout << "Calculate invoice total" << std::endl;
-            Menu::PressKeyToContinue();
-            break;
-        case 4:
-            return 0;
-        default:
-            std::cout << "Invalid choice" << std::endl;
-            Menu::PressKeyToContinue();
-            break;
-        }
-    }
-
-    // Add implementation for handling the choice in the InvoiceMenu
-}
-
 int Menu::CustomerMenu()
 {
     system("clear");
@@ -141,18 +101,19 @@ int Menu::CustomerMenu()
             CustomerMap::addCustomer(std::move(customer_ptr));
 
             Menu::PressKeyToContinue();
-            break;
+            return 0;
         }
         case 2:
             CustomerMap::display();
             Menu::PressKeyToContinue();
-            break;
+            return 0;
+
         case 3:
             return 0;
         default:
             std::cout << "Invalid choice" << std::endl;
             Menu::PressKeyToContinue();
-            break;
+            return 0;
         }
     }
 }

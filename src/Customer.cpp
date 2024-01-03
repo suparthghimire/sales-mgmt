@@ -33,3 +33,8 @@ void Customer::display()
     std::cout << "ID: " << this->id << std::endl;
     std::cout << "Name: " << this->name << std::endl;
 }
+
+int Customer::getId()
+{
+    return this->id;
+}

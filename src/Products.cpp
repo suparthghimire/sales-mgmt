@@ -37,3 +37,12 @@ int Product::getId()
 {
     return this->id;
 }
+double Product::getPrice()
+{
+    return this->price;
+}
+
+std::string Product::getName()
+{
+    return this->name;
+}

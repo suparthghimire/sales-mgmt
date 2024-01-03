@@ -10,20 +10,25 @@ void CustomerMap::addCustomer(std::unique_ptr<Customer> customer)
 
 T_CustomerMap CustomerMap::getAllCustomers()
 {
+
     return std::move(customers);
 }
 
-std::unique_ptr<Customer> CustomerMap::getSingleCustomer(int id)
+std::unique_ptr<Customer> &CustomerMap::getSingleCustomer(int id)
 {
-    std::unique_ptr<Customer> customer = std::move(customers[id]);
-    return customer;
+    auto iterator = customers.find(id);
+    if (iterator == customers.end())
+    {
+        static std::unique_ptr<Customer> nullCustomer; // Return a static null object
+        return nullCustomer;
+    }
+    return iterator->second;
 }
 
 void CustomerMap::load()
 {
     std::string content;
     FileHandler::readFromFile("customers", content);
-
     /**
      * For each line
      * 1. split the line by comma

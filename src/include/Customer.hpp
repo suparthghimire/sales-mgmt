@@ -16,4 +16,5 @@ public:
     Customer(std::string name);
     void to_csv();
     void display();
+    int getId();
 };

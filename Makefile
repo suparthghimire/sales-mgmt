@@ -29,6 +29,8 @@ $(BINDIR):
 
 data:
 	mkdir -p data
+	mkdir -p data/invoices
+
 
 
 create_files: data

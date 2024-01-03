@@ -13,7 +13,7 @@ private:
 public:
     static void addCustomer(std::unique_ptr<Customer> customer);
     static T_CustomerMap getAllCustomers();
-    static std::unique_ptr<Customer> getSingleCustomer(int id);
+    static std::unique_ptr<Customer> &getSingleCustomer(int id);
     static void load();
     static void display();
 };

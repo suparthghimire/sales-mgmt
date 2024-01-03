@@ -21,8 +21,8 @@ private:
 
 protected:
     std::string name;
-    double price;
     int id;
+    double price;
     ProductType type;
 
 public:
@@ -32,6 +32,8 @@ public:
     Product(std::string name, ProductType type);
 
     int getId();
+    std::string getName();
+    double getPrice();
 
     // set price of product
     virtual void setPrice(double price) = 0;
