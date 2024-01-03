@@ -6,6 +6,8 @@
 #include <fstream>
 #include <iomanip>
 #include <memory>
+#include <random>
+#include <chrono>
 
 int Invoice::obj_id = 0;
 
@@ -69,7 +71,14 @@ void Invoice::saveToFile()
     // first display the invoice
     // whatever is in out buffer, write that to text file
 
-    std::string name = "invoice_" + std::to_string(this->id) + ".txt";
+    auto seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
+    std::default_random_engine generator(seed);
+
+    // Generate a random number between 0 and 99
+    std::uniform_int_distribution<int> distribution(0, 99);
+    int random_number = distribution(generator);
+
+    std::string name = "invoice_" + std::to_string(this->id) + std::to_string(random_number) + ".txt";
     std::string path = "data/invoices/" + name;
     std::ofstream output(path);
 
