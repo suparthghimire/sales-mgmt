@@ -2,6 +2,7 @@
 #include "include/Product.hpp"
 #include "include/Electronics.hpp"
 #include "include/Grocery.hpp"
+#include "include/Clothing.hpp"
 
 #include <iostream>
 #include <memory>
@@ -19,37 +20,54 @@ std::unique_ptr<Product> createProduct(Product::ProductType type)
     {
     case Product::ProductType::ELECTRONICS:
     {
-        std::string available_gadgets[] = {
+        std::string available_options[] = {
             "1. Wearable",
             "2. Non-Wearable",
         };
-        int gadgetChoice = Menu::DisplayMenu(available_gadgets, 2);
-        if (gadgetChoice < 1 || gadgetChoice > 2)
+        int selectedChoice = Menu::DisplayMenu(available_options, 2);
+        if (selectedChoice < 1 || selectedChoice > 2)
         {
             std::cout << "Invalid choice" << std::endl;
             Menu::PressKeyToContinue();
             return nullptr;
         }
 
-        Electronics::GadgetType gt = static_cast<Electronics::GadgetType>(gadgetChoice - 1);
+        Electronics::GadgetType gt = static_cast<Electronics::GadgetType>(selectedChoice - 1);
         return std::make_unique<Electronics>(name, type, gt);
     }
     case Product::ProductType::GROCERY:
     {
-        std::string available_gadgets[] = {
+        std::string available_options[] = {
             "1. Veg",
             "2. Non-Veg",
         };
-        int gadgetChoice = Menu::DisplayMenu(available_gadgets, 2);
-        if (gadgetChoice < 1 || gadgetChoice > 2)
+        int selectedChoice = Menu::DisplayMenu(available_options, 2);
+        if (selectedChoice < 1 || selectedChoice > 2)
         {
             std::cout << "Invalid choice" << std::endl;
             Menu::PressKeyToContinue();
             return nullptr;
         }
 
-        Grocery::GroceryType gt = static_cast<Grocery::GroceryType>(gadgetChoice - 1);
+        Grocery::GroceryType gt = static_cast<Grocery::GroceryType>(selectedChoice - 1);
         return std::make_unique<Grocery>(name, type, gt);
+    }
+    case Product::ProductType::CLOTHING:
+    {
+        std::string available_options[] = {
+            "1. Adult",
+            "2. Child",
+        };
+        int selectedChoice = Menu::DisplayMenu(available_options, 2);
+        if (selectedChoice < 1 || selectedChoice > 2)
+        {
+            std::cout << "Invalid choice" << std::endl;
+            Menu::PressKeyToContinue();
+            return nullptr;
+        }
+
+        Clothing::ClothingAgeType cat = static_cast<Clothing::ClothingAgeType>(selectedChoice - 1);
+        return std::make_unique<Clothing>(name, type, cat);
     }
 
     default:
