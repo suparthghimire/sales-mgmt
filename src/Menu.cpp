@@ -1,11 +1,12 @@
 #include "include/Menu.hpp"
 #include "include/Customer.hpp"
 #include <iostream>
+#include <limits>
 #include <time.h>
 
-void Menu::PressKeyToContinue(std::string message = "Press any key to go back")
+void Menu::PressKeyToContinue()
 {
-    std::cout << message;
+    std::cout << "Press any key to go back";
     std::cin.ignore();
     std::cin.get();
 }
@@ -13,9 +14,6 @@ void Menu::PressKeyToContinue(std::string message = "Press any key to go back")
 int Menu::DisplayMenu(std::string menu_items[], int menu_items_length)
 {
 
-    std::cout << "===================================" << std::endl;
-    std::cout << "        Sales Management System    " << std::endl;
-    std::cout << "===================================" << std::endl;
     for (int i = 0; i < menu_items_length; i++)
     {
         std::cout << menu_items[i] << std::endl;
@@ -122,7 +120,10 @@ int Menu::CustomerMenu()
             std::cout << "Create Customer" << std::endl;
             std::cout << "Enter name: ";
             std::string name;
-            std::cin >> name;
+            std::getline(std::cin >> std::ws, name);
+
+            // ignore
+            std::cin.ignore();
 
             // create customer
             Customer customer(name);
@@ -140,15 +141,4 @@ int Menu::CustomerMenu()
             break;
         }
     }
-}
-
-int Menu::ProductMenu()
-{
-    system("clear");
-    std::string menu_items[2] = {
-        "1. Create Product",
-        "2. Back"};
-
-    int choice = DisplayMenu(menu_items, 2);
-    // Add implementation for handling the choice in the ProductMenu
 }
