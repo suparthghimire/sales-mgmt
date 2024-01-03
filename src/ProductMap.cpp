@@ -30,10 +30,7 @@ std::unique_ptr<Product> ProductMap::getSingleProduct(std::pair<int, int> key)
 void ProductMap::load()
 {
     // variable that will have list of all products
-    std::cout << "Loading products" << std::endl;
     std::string content;
-    FileHandler::readFromFile("products", content);
-
     std::cout << content << std::endl;
 
     /**
@@ -48,6 +45,9 @@ void ProductMap::load()
     std::istringstream stream(content);
 
     std::string line;
+
+    // empty the map
+    products.clear();
 
     while (std::getline(stream, line))
     {

@@ -6,7 +6,7 @@
 
 class Product
 {
-    static int object_id;
+    static int obj_id;
 
 public:
     enum ProductType
@@ -31,10 +31,14 @@ public:
     // product without  id (required when user is entering data)
     Product(std::string name, ProductType type);
 
+    int getId();
+
     // set price of product
     virtual void setPrice(double price) = 0;
     // save to file
     virtual void to_csv() = 0;
 
     virtual void display() = 0;
+
+    virtual int getSubType() = 0;
 };

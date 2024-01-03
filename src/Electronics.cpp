@@ -59,3 +59,8 @@ void Electronics::display()
     std::cout << "Type: " << this->type << std::endl;
     std::cout << "Gadget Type: " << GetGadgetTypeName(this->gadget_type) << std::endl;
 }
+
+int Electronics::getSubType()
+{
+    return static_cast<int>(this->gadget_type);
+}

@@ -148,6 +148,7 @@ int Menu::ProductMenu()
         product->setPrice(price);
         product->to_csv();
 
+        ProductMap::load();
         std::cout << "Product created successfully" << std::endl;
         Menu::PressKeyToContinue();
         return 0;

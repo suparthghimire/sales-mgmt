@@ -59,3 +59,8 @@ void Clothing::display()
     std::cout << "Type: " << this->type << std::endl;
     std::cout << "Clothing Age Type: " << GetClothingAgeTypeName(this->clothing_age_type) << std::endl;
 }
+
+int Clothing::getSubType()
+{
+    return static_cast<int>(this->clothing_age_type);
+}

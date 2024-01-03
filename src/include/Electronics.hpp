@@ -23,4 +23,5 @@ public:
     void setPrice(double price);
     void to_csv();
     void display();
+    int getSubType();
 };

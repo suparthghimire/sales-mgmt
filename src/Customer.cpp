@@ -1,5 +1,7 @@
 #include "include/Customer.hpp"
 #include "include/FileHandler.hpp"
+#include <random>
+#include <chrono>
 
 #include <iostream>
 
@@ -7,7 +9,14 @@ int Customer::obj_id = 0;
 
 Customer::Customer(std::string name)
 {
-    this->id = ++obj_id;
+    auto seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
+    std::default_random_engine generator(seed);
+
+    // Generate a random number between 0 and 99
+    std::uniform_int_distribution<int> distribution(0, 99);
+    int random_number = distribution(generator);
+
+    this->id = random_number + (++obj_id);
     this->name = name;
 }
 

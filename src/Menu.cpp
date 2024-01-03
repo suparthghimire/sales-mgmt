@@ -53,6 +53,7 @@ int Menu::StartMenu()
             break;
         case 3:
             ProductMenu();
+            std::cout << "HERE" << std::endl;
             break;
         case 4:
             return 0;
@@ -133,13 +134,19 @@ int Menu::CustomerMenu()
             // to_csv to file
             customer.to_csv();
 
+            // creatre unique_ptr of customer
+            std::unique_ptr<Customer> customer_ptr = std::make_unique<Customer>(customer);
+
+            // add customer to map
+            CustomerMap::addCustomer(std::move(customer_ptr));
+
             Menu::PressKeyToContinue();
             break;
         }
         case 2:
             CustomerMap::display();
             Menu::PressKeyToContinue();
-            return 0;
+            break;
         case 3:
             return 0;
         default:

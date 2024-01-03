@@ -59,3 +59,8 @@ void Grocery::display()
     std::cout << "Type: " << this->type << std::endl;
     std::cout << "Grocery Type: " << GetGroceryTypeName(this->grocery_type) << std::endl;
 }
+
+int Grocery::getSubType()
+{
+    return static_cast<int>(this->grocery_type);
+}
