@@ -1,5 +1,6 @@
 #include "include/Menu.hpp"
 #include "include/Customer.hpp"
+#include "include/CustomerMap.hpp"
 #include <iostream>
 #include <limits>
 #include <time.h>
@@ -105,14 +106,16 @@ int Menu::InvoiceMenu()
 int Menu::CustomerMenu()
 {
     system("clear");
-    std::string menu_items[2] = {
+    std::string menu_items[3] = {
         "1. Create Customer",
-        "2. Back"};
+        "2. Show all customers",
+        "3. Back",
+    };
 
     while (true)
     {
         system("clear");
-        int choice = DisplayMenu(menu_items, 2);
+        int choice = DisplayMenu(menu_items, 3);
         switch (choice)
         {
         case 1:
@@ -134,6 +137,10 @@ int Menu::CustomerMenu()
             break;
         }
         case 2:
+            CustomerMap::display();
+            Menu::PressKeyToContinue();
+            return 0;
+        case 3:
             return 0;
         default:
             std::cout << "Invalid choice" << std::endl;

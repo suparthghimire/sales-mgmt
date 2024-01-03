@@ -1,5 +1,6 @@
 #include "include/Menu.hpp"
 #include "include/Product.hpp"
+#include "include/ProductMap.hpp"
 #include "include/Electronics.hpp"
 #include "include/Grocery.hpp"
 #include "include/Clothing.hpp"
@@ -81,12 +82,13 @@ std::unique_ptr<Product> createProduct(Product::ProductType type)
 int Menu::ProductMenu()
 {
     system("clear");
-    std::string menu_items[2] = {
+    std::string menu_items[3] = {
         "1. Create Product",
-        "2. Back",
+        "2. Display Products",
+        "3. Back",
     };
 
-    int choice = DisplayMenu(menu_items, 2);
+    int choice = DisplayMenu(menu_items, 3);
 
     switch (choice)
     {
@@ -151,6 +153,10 @@ int Menu::ProductMenu()
         return 0;
     }
     case 2:
+        ProductMap::display();
+        Menu::PressKeyToContinue();
+        return 0;
+    case 3:
         return 0;
     default:
         std::cout << "Invalid choice" << std::endl;
