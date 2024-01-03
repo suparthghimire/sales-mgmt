@@ -18,3 +18,9 @@ void Customer::to_csv()
     std::string data = std::to_string(this->id) + "," + this->name;
     FileHandler::writeFile(fileName, data);
 }
+
+void Customer::display()
+{
+    std::cout << "ID: " << this->id << std::endl;
+    std::cout << "Name: " << this->name << std::endl;
+}

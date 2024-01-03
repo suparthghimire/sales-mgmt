@@ -1,15 +1,17 @@
 #include <iostream>
 #include "include/Menu.hpp"
 #include "include/ProductMap.hpp"
+#include "include/CustomerMap.hpp"
 
 int main()
 {
     system("clear");
     // read products from file
-    // stores them in array
     ProductMap::load();
-    ProductMap::display();
+    // read customers from file
+    // stores them in array
+    CustomerMap::load();
 
-    // Menu::StartMenu();
+    Menu::StartMenu();
     return 0;
 }
