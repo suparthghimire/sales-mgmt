@@ -30,7 +30,7 @@ bool FileHandler::writeFile(std::string &filename, std::string &data)
 
 bool FileHandler::readFromFile(const std::string &filename, std::string &content)
 {
-    std::string full_path = DATA_DIR + filename;
+    std::string full_path = DATA_DIR + filename + ".csv";
     // Open the file for reading
     std::ifstream inputFile(full_path);
 
