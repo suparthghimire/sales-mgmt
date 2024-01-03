@@ -1,6 +1,7 @@
 #include "include/Menu.hpp"
 #include "include/Product.hpp"
 #include "include/Electronics.hpp"
+#include "include/Grocery.hpp"
 
 #include <iostream>
 #include <memory>
@@ -32,6 +33,23 @@ std::unique_ptr<Product> createProduct(Product::ProductType type)
 
         Electronics::GadgetType gt = static_cast<Electronics::GadgetType>(gadgetChoice - 1);
         return std::make_unique<Electronics>(name, type, gt);
+    }
+    case Product::ProductType::GROCERY:
+    {
+        std::string available_gadgets[] = {
+            "1. Veg",
+            "2. Non-Veg",
+        };
+        int gadgetChoice = Menu::DisplayMenu(available_gadgets, 2);
+        if (gadgetChoice < 1 || gadgetChoice > 2)
+        {
+            std::cout << "Invalid choice" << std::endl;
+            Menu::PressKeyToContinue();
+            return nullptr;
+        }
+
+        Grocery::GroceryType gt = static_cast<Grocery::GroceryType>(gadgetChoice - 1);
+        return std::make_unique<Grocery>(name, type, gt);
     }
 
     default:
