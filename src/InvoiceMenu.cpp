@@ -125,6 +125,7 @@ int Menu::InvoiceMenu()
     };
 
     system("clear");
+    system("cls");
     int choice = DisplayMenu(menu_items, 6);
 
     switch (choice)

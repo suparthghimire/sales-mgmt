@@ -82,6 +82,8 @@ std::unique_ptr<Product> createProduct(Product::ProductType type)
 int Menu::ProductMenu()
 {
     system("clear");
+system("cls");
+;
     std::string menu_items[3] = {
         "1. Create Product",
         "2. Display Products",

@@ -21,16 +21,21 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.cpp | $(BUILDDIR)
 	$(CXX) -c $< -o $@ $(CXXFLAGS)
 
 $(BUILDDIR):
-	mkdir -p $(BUILDDIR)
+	mkdir $(BUILDDIR)
 
 $(BINDIR):
-	mkdir -p $(BINDIR)
+	mkdir $(BINDIR)
 
 
 data:
-	mkdir -p data
-	mkdir -p data/invoices
-
+	mkdir data
+#Windows
+ifeq ($(OS),Windows_NT)
+	mkdir data\invoices
+# UNIX
+else
+	mkdir data/invoices
+endif
 
 
 create_files: data
@@ -38,7 +43,8 @@ create_files: data
 clean:
 #Windows
 ifeq ($(OS),Windows_NT)
-	deltree /S /Q $(BUILDDIR) $(BINDIR)	
+	-@if exist $(BUILDDIR) rmdir /s /q $(BUILDDIR)
+	-@if exist $(BINDIR) rmdir /s /q $(BINDIR)
 # UNIX
 else
 	rm -rf $(BUILDDIR) $(BINDIR)

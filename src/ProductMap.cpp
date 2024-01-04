@@ -39,7 +39,6 @@ void ProductMap::load()
 
     std::string content;
     FileHandler::readFromFile("products", content);
-    std::cout << "Content: " << content << std::endl;
     /**
      * For each line
      * 1. split the line by comma

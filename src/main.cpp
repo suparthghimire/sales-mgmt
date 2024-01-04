@@ -6,6 +6,8 @@
 int main()
 {
     system("clear");
+system("cls");
+;
     // read products from file
     ProductMap::load();
     // read customers from file

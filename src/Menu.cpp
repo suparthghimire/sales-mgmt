@@ -40,6 +40,8 @@ int Menu::StartMenu()
     while (true)
     {
         system("clear");
+system("cls");
+;
 
         int choice = DisplayMenu(menu_items, 4);
 
@@ -67,6 +69,8 @@ int Menu::StartMenu()
 int Menu::CustomerMenu()
 {
     system("clear");
+system("cls");
+;
     std::string menu_items[3] = {
         "1. Create Customer",
         "2. Show all customers",
@@ -76,6 +80,8 @@ int Menu::CustomerMenu()
     while (true)
     {
         system("clear");
+system("cls");
+;
         int choice = DisplayMenu(menu_items, 3);
         switch (choice)
         {
