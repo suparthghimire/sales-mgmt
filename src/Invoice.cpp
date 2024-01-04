@@ -87,6 +87,8 @@ void Invoice::saveToFile()
 
     this->display();
 
+    std::cout << "Invoice saved to file: " << path << std::endl;
+
     std::cout.rdbuf(coutbuf); // reset to standard output again
 
     // close the file

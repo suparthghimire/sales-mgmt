@@ -156,7 +156,6 @@ int Menu::InvoiceMenu()
     case 5:
         std::cout << "Save Invoice" << std::endl;
         saveToFile();
-        std::cout << "Invoice saved" << std::endl;
         Menu::PressKeyToContinue();
         return 0;
     case 6:
